@@ -1,4 +1,4 @@
-# Build Flask Docker container and deploy to OpenShift
+# Build a Flask Docker container and deploy to OpenShift
 
 This repository provides a simple Python web application implemented using the Flask web framework and executed using 
 ``gunicorn``. It is intended to be used to demonstrate deployment of Python web applications to OpenShift 4 using 
@@ -33,7 +33,7 @@ need to be satisfied for this to work are:
 
 The example is derived from [Getting Started with Flask](https://scotch.io/tutorials/getting-started-with-flask-a-python-microframework) but has 
 been modified to use [Bootstrap 4](https://getbootstrap.com/docs/4.6/getting-started/introduction/), work with [Green Unicorn - WSGI sever](https://docs.gunicorn.org/en/stable/), the content of the web-site 
-changed to provide [Lorem Ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum) pages from [Lorem IPsum Generators - The 14 Best](https://digital.com/lorem-ipsum-generators/), 
+changed to provide [Lorem Ipsum](https://en.wikipedia.org/wiki/Lorem_ipsum) pages from [Lorem Ipsum Generators - The 14 Best](https://digital.com/lorem-ipsum-generators/), 
 and `isalive`, `isready` probe pages added for OpenShift (Kubernetes).
 
 Suggestion, there are many other *Lorem Ipsum* themes on [Lorem Ipsum Generators - The 14 Best](https://digital.com/lorem-ipsum-generators/), so try adding a few more examples to become more comfortable with Flask.
@@ -360,6 +360,7 @@ PS1> docker rm lazy-dog                        # delete the container
 
 The deployment was tested using *Red Hat CodeReady Containers* (CRC) details of which can be found here:
 
+* [Red Hat OpenShift Local (formerly Red Hat CodeReady Containers)](https://developers.redhat.com/products/openshift-local/overview)
 * [Introducing Red Hat CodeReady Containers](https://code-ready.github.io/crc/);
 * [Red Hat OpenShift 4 on your laptop: Introducing Red Hat CodeReady Containers](https://developers.redhat.com/blog/2019/09/05/red-hat-openshift-4-on-your-laptop-introducing-red-hat-codeready-containers/);
 * [Red Hat CodeReady Containers / Install OpenShift on your laptop](https://developers.redhat.com/products/codeready-containers/overview);
