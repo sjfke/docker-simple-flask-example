@@ -1,4 +1,5 @@
 # Build a Flask Docker container and deploy to OpenShift
+## Introduction
 
 This repository provides a simple Python web application implemented using the Flask web framework and executed using 
 ``gunicorn``. It is intended to be used to demonstrate deployment of Python web applications to OpenShift 4 using 
@@ -49,7 +50,6 @@ Other useful references:
 ``Fedora 33`` and ``Windows 10 Home Edition`` were used for this project. Fedora 32 deprecated `docker` in favour of `podman`, while these are command-line compatible 
 there are some minor differences, so both are illustrated. In [Fedora 35 docker](https://fedoramagazine.org/docker-and-fedora-35/) has been reintroduced.
 
-
 * [Transitioning from Docker to Podman](https://developers.redhat.com/blog/2020/11/19/transitioning-from-docker-to-podman/)
 * [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/en-us/windows/wsl/)
 * [Docker on Hyper-V vs WSL 2](https://superuser.com/questions/1561465/docker-on-hyper-v-vs-wsl-2)
@@ -58,7 +58,7 @@ there are some minor differences, so both are illustrated. In [Fedora 35 docker]
 
 ## Docker File
 
-A simple *Docker file* which uses a , ```python:3-alpine``` container, it first *pip installs* the required applications specified 
+This simple *Docker file* uses, ``python:3-alpine`` container, it first *pip installs* the required applications specified 
 in the *requirements.txt* file, copies the application files, and finally, sets up the environment and 
 starts *gunicorn*.
 
@@ -110,7 +110,7 @@ CMD gunicorn -b 0.0.0.0:${PORT} wsgi
 
 ## Prerequisites
 
-Download (`podman pull`, `docker pull`), the python docker images, `python3` and `python3-alpine`.
+First download (`podman pull`, `docker pull`), the python docker images, `python3` and `python3-alpine`.
 
 ```bash
 $ podman images  # repo is empty
@@ -139,8 +139,6 @@ python       3          6f1289b1e6a1   2 days ago   911MB
 ```
 
 Notice how much bigger the `python:3` image is, so unless you require a full python environment, use the `python:3-alpine`.
-
-This project has been several iterations, so while I have attempted to ensure all the Docker image ID's are consistent, if there are errors please report them. 
 
 ## Local Build and Test
 
@@ -175,7 +173,7 @@ PS1> docker run -dt -p 8081:8080 --name "lazy-dog" localhost/flask-lorem-ipsum
 ```
 
 Note omitting the `--name` in the `podman run` command, and the name will be created using [Names Auto Generator](https://github.com/moby/moby/blob/master/pkg/namesgenerator/names-generator.go). 
-Also note for clarity different port numbers are used, *8080* for the container, *8081* to access it, (many examples have the same port number for both).
+Also note for clarity different port numbers are used, *8080* for the container, *8081* to access it, (many examples use the same port number for both).
 
 ### Check the Docker container is running and working.
 
@@ -238,7 +236,8 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 
 ## Remote Build and Test
 
-This is based on [Publish Container Images to Docker Hub / Image registry with Podman](https://computingforgeeks.com/how-to-publish-docker-image-to-docker-hub-with-podman/)
+So having built and tested this locally, now it is time to publish it remotely, the approach is based 
+on [Publish Container Images to Docker Hub / Image registry with Podman](https://computingforgeeks.com/how-to-publish-docker-image-to-docker-hub-with-podman/)
 
 You need an account on a public docker repository, such as:
 
